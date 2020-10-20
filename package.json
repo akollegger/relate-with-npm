@@ -1,0 +1,46 @@
+{
+  "name": "relate-with-npm",
+  "version": "1.0.0",
+  "description": "",
+  "relate": {
+    "dev": {
+      "env": {
+        "name": "relate-tutorials",
+        "type": "local",
+        "dbms": {
+          "name": "with-npm-dbms",
+          "version": "4.1.3",
+          "db": {
+            "name": "moviesz"
+          }
+        }
+      }
+    },
+    "test": {}
+  },
+  "scripts": {
+    "relate:env:init": "relate env:init --name=$npm_package_relate_env --type=LOCAL",
+    "relate:dbms:install": "relate dbms:install $npm_package_relate_env -e $npm_package_relate_env -n $npm_package_relate_dbms_dev_name",
+    "relate:dbms:start": "relate dbms:start $npm_package_relate_dbms_dev_name",
+    "relate:dbms:status": "relate dbms:info $npm_package_relate_dbms_dev_name",
+    "relate:dbms:stop": "relate dbms:stop $npm_package_relate_dbms_dev_name",
+    "uninstall": "run-script-os",
+    "uninstall:win32": "rimraf '%USERPROFILE%\\AppData\\Local\\Neo4j\\Relate\\' '%USERPROFILE%\\AppData\\Roaming\\Neo4j\\Relate\\' ",
+    "uninstall:darwin": "rimraf \"$HOME/Library/Caches/com.Neo4j.Relate/\" \"$HOME/Library/Application Support/com.Neo4j.Relate\" ",
+    "uninstall:linux": "rimraf \"$HOME/.cache/neo4j-relate/\" \"$HOME/.local/share/neo4j-relate/\" \"$HOME/.config/neo4j-relate/\" "
+  },
+  "keywords": [
+    "neo4j",
+    "relate",
+    "graph",
+    "database",
+    "tutorial"
+  ],
+  "author": "Andreas Kollegger",
+  "license": "ISC",
+  "devDependencies": {
+    "@relate/cli": "^1.0.2-alpha.14",
+    "rimraf": "^3.0.2",
+    "run-script-os": "^1.1.1"
+  }
+}
